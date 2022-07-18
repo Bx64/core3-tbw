@@ -190,6 +190,13 @@ pm2 restart <solar-forger-process-id> --update-env
 | proposal2 | https://yy.yy.yy | Link to the delegate proposal in different language |
 | proposal2_lang | CC | Language (code) of the second proposal |
 
+## Fixed time payment run
+
+Run only `tbw` (and possibly `pool`) processes. Set a very large interval and use the following cronjob to automate payment at X:00 UTC every day:
+```
+0 X * * * bash ~/core3-tbw/time.sh
+```
+
 
 ## To Do
 
