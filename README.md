@@ -192,9 +192,16 @@ pm2 restart <solar-forger-process-id> --update-env
 
 ## Fixed time payment run
 
-Run only `tbw` (and possibly `pool`) processes. Set a very large interval and use the following cronjob to automate payment at X:00 UTC every day:
+Set a very large interval (i.e. `100000000`) in your config. Run only `tbw` (and possibly `pool`) processes. 
+
+Create a folder for the payout run logs:
 ```
-0 X * * * bash ~/core3-tbw/time.sh
+mkdir ~/logs && mkdir ~/logs/tbw
+```
+
+Use the following cronjob to automate payment at X:00 UTC every day:
+```
+0 X * * * bash ~/core3-tbw/time.sh >> ~/logs/tbw/core3-tbw-run-$(date +\%Y-\%m-\%d).log 2>&1
 ```
 
 
