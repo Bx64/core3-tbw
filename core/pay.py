@@ -23,7 +23,7 @@ def chunks(l, n):
 
 def process_payments(payment, unprocessed, dynamic, config, exchange, sql):
     logger.info("Transfer Payment")
-    logger.debug("Unprocesses payment :")
+    logger.debug("Unprocessed payment :")
     logger.debug(unprocessed)
     signed_tx = []
     check = {} 
@@ -127,9 +127,10 @@ if __name__ == '__main__':
 
  
         logger.info("End Script - Looping")
-        #killsig.wait(data.block_check)
+        if config.fix_time == 'Y':
+            quit()
         killsig.wait(180)
-        quit()
+
         if killsig.is_set():
             logger.debug("Kill switch set. Breaking the main loop.")
             break
